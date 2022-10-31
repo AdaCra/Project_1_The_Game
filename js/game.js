@@ -18,3 +18,5 @@ class Game {
         ]
     }
 }
+
+console.log("hello world")
