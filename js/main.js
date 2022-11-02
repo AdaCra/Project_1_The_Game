@@ -1,62 +1,53 @@
-let backgroundEasy,
-	backgroundE2M,
-	backgroundMedium,
-	backgroundM2H,
-	backgroundHard
 
-let playerType1,
-	playerType2
+let backgrounds = new Background()
+let player = new Player()
 
-let fuel,
-	time
+// to be split below
 
-let blueTruck,
-	greenVan,
-	redCar,
-	redTruck,
-	yellowCar
 
-let manhole,
-	oilSpill,
-	roadWorks
+let fuel;
+let	addToClock;
 
-let bkgndSize = [600, 900]
-let background 
+let blueTruck;
+let	greenVan;
+let	redCar;
+let	redTruck;
+let	yellowCar;
+
+let manhole;
+let	oilSpill;
+let	roadWorks;
+
+let bkgndSize = [600, 900] 
 
 // Load game assets
 function preload() {
-	backgroundEasy 		= "./assets/background/roadLanesX4.png";
-	backgroundE2M 		= "./assets/background/roadLanes4To3.png";
-	backgroundMedium 	= "./assets/background/roadLanesX3.png";
-	backgroundM2H 		= "./assets/background/roadLanes3To2.png";
-	backgroundHard 		= "./assets/background/roadLanesX2.png";
 	
-	playerType1 	= "./assets/player/carType1.png";
-	playerType2 	= "./assets/player/carType2.png";
+	fuel	= loadImage("./assets/collectables/fuel.png");
+	addToClock	= loadImage("./assets/collectables/time.png");
 
-	fuel	= "./assets/collectables/fuel.png";
-	time	= "./assets/collectables/time.png";
+	blueTruck	= loadImage("./assets/traffic/blueTruck.png");
+	greenVan	= loadImage("./assets/traffic/greenVan.png");
+	redCar		= loadImage("./assets/traffic/redCar.png");
+	redCar		= loadImage("./assets/traffic/redCar.png");
+	redTruck	= loadImage("./assets/traffic/redTruck.png");
+	yellowCar	= loadImage("./assets/traffic/yellowCar.png");
 
-	blueTruck	= "./assets/traffic/blueTruck.png";
-	greenVan	= "./assets/traffic/greenVan.png";
-	redCar		= "./assets/traffic/redCar.png";
-	redTruck	= "./assets/traffic/redTruck.png";
-	yellowCar	= "./assets/traffic/yellowCar.png";
-
-	manhole		= "./assets/obstacles/manhole.png";
-	oilSpill	= "./assets/obstacles/oilSpill.png";
-	roadWorks	= "./assets/obstacles/roadWorks.png";
+	manhole		= loadImage("./assets/obstacles/manhole.png");
+	oilSpill	= loadImage("./assets/obstacles/oilSpill.png");
+	roadWorks	= loadImage("./assets/obstacles/roadWorks.png");
+	player.preload()
+	backgrounds.preload()
 }
 
 function setup() {
-	bkgndSize = [windowHeight/3*2, windowHeight]
-	createCanvas(bkgndSize[0], bkgndSize[1])
-	frameRate(25)
-
+	bkgndSize = [600, 900],
+	createCanvas(600, 900)
 }
 
 function draw() {
-	image(backgroundEasy, 0,0);
+	backgrounds.draw()
+	player.draw()
 }
 
 // function keyPressed() {
