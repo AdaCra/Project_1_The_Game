@@ -35,27 +35,28 @@ class Background {
 
         this.y += this.speed
         image(this.currentBkgnd1, 0, this.y, width, height)
-        image(this.currentBkgnd2, 0, this.y - this.currentBkgnd2.height, width, height)
-        image(this.currentBkgnd3, 0, this.y - (this.currentBkgnd2.height*2), width, height)			// Here we add a second image
+        image(this.currentBkgnd2, 0, this.y - this.currentBkgnd2.height, width, height) // second image
+        image(this.currentBkgnd3, 0, this.y - (this.currentBkgnd2.height*2), width, height)	// third image
+       
 
         if (this.y >= height*2) {
                 this.y = 0;
                 this.setCounter ++;
             }
-            if (this.setCounter === /*60*/10){
+            if (this.setCounter === 30){
                 this.currentBkgnd2 = this.bkgE2M
                 this.currentBkgnd3 = this.bkgMedium
             }
-            if (this.setCounter === /*61*/11){
+            if (this.setCounter === 31){
                 this.currentBkgnd1 = this.bkgMedium
                 this.currentBkgnd2 = this.bkgMedium
                 this.currentBkgnd3 = this.bkgMedium
             }
-            if (this.setCounter === /*141*/21){
+            if (this.setCounter === 41){
                 this.currentBkgnd2 = this.bkgM2H
                 this.currentBkgnd3 = this.bkgHard
             }
-            if (this.setCounter === /*142*/22){
+            if (this.setCounter === 42){
                 this.currentBkgnd1 = this.bkgHard
                 this.currentBkgnd2 = this.bkgHard
                 this.currentBkgnd3 = this.bkgHard

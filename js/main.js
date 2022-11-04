@@ -2,7 +2,11 @@
 let backgrounds = new Background()
 let player = new Player()
 let traffic = new Traffic()
+let blocks = new Block()
+let assis = new Assistor()
 let trafficArr = []
+let blockArr = []
+let assistorArr = []
 let laneArray = [85, 195, 305, 415]
 let x
 let trafficPics
@@ -44,17 +48,38 @@ function draw() {
 	} else if (backgrounds.currentBkgnd3 === backgrounds.bkgHard) {
 		x = laneArray[Math.floor(Math.floor(Math.random() * 2 + 1))]}
 	
-	// 
-		if (backgrounds.speed > 5 && frameCount % 150 === 0) {
+	// bring in cars
+
+		if (backgrounds.speed > 5 && frameCount % 120 === 0) {
 		trafficArr.push(new Traffic(x, backgrounds.speed, trafficPics))
 	}
-
 	 trafficArr.forEach(function(trafficUnit){
 		trafficUnit.speed = backgrounds.speed
 		trafficUnit.draw()	
-		traffic.collision(player, trafficUnit)
-		
+		// traffic.collision(player, trafficUnit)
 	});
+	// bring in blocks
+
+	if (backgrounds.speed > 10 && frameCount % 250 === 0) {
+		blockArr.push(new Block(x, backgrounds.speed, trafficPics))
+	}
+	blockArr.forEach(function(blockUnit){
+		blockUnit.speed = backgrounds.speed
+		blockUnit.draw()	
+		// traffic.collision(player, blockUnit)
+	});
+	// bring in assisstors
+
+	if (backgrounds.speed > 10 && frameCount % 500 === 0) {
+		assistorArr.push(new Assistor(x, backgrounds.speed, trafficPics))
+	}
+	assistorArr.forEach(function(assistUnit){
+		assistUnit.speed = backgrounds.speed
+		assistUnit.draw()	
+		// traffic.collision(player, assistUnit)
+	});
+		
+	
 
 	trafficArr = trafficArr.filter(trafficUnit => trafficUnit.y < 2000)
 
