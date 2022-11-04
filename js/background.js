@@ -13,7 +13,8 @@ class Background {
         this.setCounter = 0;
         this.viewSize = [600, 900]
         this.lanePositions = [85, 195, 305, 415]
-
+        this.speed = 0
+        this.speedometer = 0
     }
     
     preload() {
@@ -27,39 +28,61 @@ class Background {
         this.bkgHard 	    = loadImage("./assets/background/roadLanesX2.png")
     }
 
-    setup() {
-;
-    }
-
     draw() {
-        clear()
-        this.y += 5
+        clear() 
+
+        this.speedometer = this.speed * 5
+
+        this.y += this.speed
         image(this.currentBkgnd1, 0, this.y, width, height)
         image(this.currentBkgnd2, 0, this.y - this.currentBkgnd2.height, width, height)
         image(this.currentBkgnd3, 0, this.y - (this.currentBkgnd2.height*2), width, height)			// Here we add a second image
-			// When the image leaves the screen we set it to the starting position
-			if (this.y >= height*2) {
+
+        if (this.y >= height*2) {
                 this.y = 0;
                 this.setCounter ++;
             }
-            if (this.setCounter === 2){
+            if (this.setCounter === /*60*/10){
                 this.currentBkgnd2 = this.bkgE2M
                 this.currentBkgnd3 = this.bkgMedium
             }
-            if (this.setCounter === 3){
+            if (this.setCounter === /*61*/11){
                 this.currentBkgnd1 = this.bkgMedium
                 this.currentBkgnd2 = this.bkgMedium
                 this.currentBkgnd3 = this.bkgMedium
             }
-            if (this.setCounter === 5){
+            if (this.setCounter === /*141*/21){
                 this.currentBkgnd2 = this.bkgM2H
                 this.currentBkgnd3 = this.bkgHard
             }
-            if (this.setCounter === 6){
+            if (this.setCounter === /*142*/22){
                 this.currentBkgnd1 = this.bkgHard
                 this.currentBkgnd2 = this.bkgHard
                 this.currentBkgnd3 = this.bkgHard
             }
+
     }
 
+    goFast(){
+        if(this.speed <= 36){
+        this.speed += 0.1    
+        }
+    }
+    slowDown(){
+        if(this.speed > 0){
+            this.speed -= 0.3   
+            }
+            if (this.speed < 0) {
+                this.speed = 0
+            }
+    }
+
+    handBrake(){
+        if(this.speed > 0){
+            this.speed -= 0.5   
+            }
+            if (this.speed < 0) {
+                this.speed = 0
+            }
+    }
 }
